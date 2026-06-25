@@ -20,6 +20,6 @@ def send_group_email(sender_name, message_text):
             server.send_message(msg)
         logger.info("Email envoye au groupe")
         return True
-    except smtplib.SMTPException as exc:
+    except Exception as exc:
         logger.error("Erreur envoi email: %s", exc)
         return False

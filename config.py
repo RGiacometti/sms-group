@@ -21,8 +21,11 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
 SMTP_FROM_NAME = os.getenv("SMTP_FROM_NAME", "Groupe SMS")
 SMTP_FROM_EMAIL = SMTP_USER
 
-SMS_MAX_LENGTH = 160
-SMS_TRUNCATE_LENGTH = 120
+ENABLE_EMAIL = os.getenv("ENABLE_EMAIL", "false").lower() == "true"
+
+SMS_SEGMENT_LENGTH = 153
+SMS_MAX_PARTS = 3
+SMS_TRUNCATE_LENGTH = SMS_SEGMENT_LENGTH * SMS_MAX_PARTS
 
 membres_path = Path(__file__).parent / "membres.json"
 MEMBRES = json.loads(membres_path.read_text(encoding="utf-8"))
