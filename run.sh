@@ -3,10 +3,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 if [ -f ".env" ]; then
-    echo "Chargement de .env"
-    set -a
-    source .env
-    set +a
+    echo "Fichier .env detecte (charge par python-dotenv)"
 fi
 
 echo "Demarrage de la passerelle SMS..."

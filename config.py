@@ -20,7 +20,7 @@ SMTP_FROM_EMAIL = SMTP_USER
 SMS_MAX_LENGTH = 160
 SMS_TRUNCATE_LENGTH = 120
 
-MEMBRES = json.loads(os.getenv("MEMBRES", "[]"))
+MEMBRES = json.loads(os.getenv("MEMBRES") or os.getenv("MEMBERS") or "[]")
 
 
 def normalize_phone(phone):
