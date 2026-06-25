@@ -9,7 +9,10 @@ load_dotenv()
 SMS_GATEWAY_URL = os.getenv("SMS_GATEWAY_URL", "http://127.0.0.1:8080/message")
 SMS_GATEWAY_USER = os.getenv("SMS_GATEWAY_USER", "")
 SMS_GATEWAY_PASSWORD = os.getenv("SMS_GATEWAY_PASSWORD", "")
+SMS_GATEWAY_BASE_URL = SMS_GATEWAY_URL.rsplit("/", 1)[0]
 WEBHOOK_PORT = int(os.getenv("WEBHOOK_PORT", "5000"))
+WEBHOOK_ID = "sms-group-gateway"
+WEBHOOK_EVENT = "sms:received"
 
 SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "465"))
