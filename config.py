@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -20,7 +21,8 @@ SMTP_FROM_EMAIL = SMTP_USER
 SMS_MAX_LENGTH = 160
 SMS_TRUNCATE_LENGTH = 120
 
-MEMBRES = json.loads(os.getenv("MEMBRES") or os.getenv("MEMBERS") or "[]")
+membres_path = Path(__file__).parent / "membres.json"
+MEMBRES = json.loads(membres_path.read_text(encoding="utf-8"))
 
 
 def normalize_phone(phone):
