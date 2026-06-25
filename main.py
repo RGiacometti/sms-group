@@ -20,31 +20,10 @@ def extract_webhook_data(data):
     if not isinstance(data, dict):
         return None, None
 
-    sources = []
-    for key in ("data", "payload"):
-        sub = data.get(key)
-        if isinstance(sub, dict):
-            sources.insert(0, sub)
-    sources.append(data)
-
-    phone = None
-    body = None
-    for source in sources:
-        phone = (
-            phone
-            or source.get("address")
-            or source.get("from")
-            or source.get("phone")
-            or source.get("sender")
-        )
-        body = (
-            body
-            or source.get("body")
-            or source.get("text")
-            or source.get("textBody")
-            or source.get("message")
-        )
-    return phone, body
+    payload = data.get("payload", data)
+    phone = payload.get("phoneNumber")
+    message = payload.get("message")
+    return phone, message
 
 
 @app.route("/webhook", methods=["POST"])

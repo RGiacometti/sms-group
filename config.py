@@ -5,8 +5,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SMS_GATEWAY_URL = os.getenv("SMS_GATEWAY_URL", "http://127.0.0.1:8080/api/v1/sms/send")
-SMS_GATEWAY_TOKEN = os.getenv("SMS_GATEWAY_TOKEN", "")
+SMS_GATEWAY_URL = os.getenv("SMS_GATEWAY_URL", "http://127.0.0.1:8080/message")
+SMS_GATEWAY_USER = os.getenv("SMS_GATEWAY_USER", "")
+SMS_GATEWAY_PASSWORD = os.getenv("SMS_GATEWAY_PASSWORD", "")
 WEBHOOK_PORT = int(os.getenv("WEBHOOK_PORT", "5000"))
 
 SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
